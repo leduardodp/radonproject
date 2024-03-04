@@ -39,29 +39,3 @@ def signin(request):
 def signout(request):
     logout(request)
     return redirect("signin")
-
-"""
-@login_required(login_url="signin")
-def profile(request):
-    user = request.user
-    blogs = Blog.objects.filter(user=user)
-    context={"user": user, "blogs": blogs}
-    return render(request, "core/profile.html", context)
-
-@login_required(login_url="signin")
-def update_profile(request):
-    if request.user.is_authenticated:
-        user = request.user
-        form = UpdateProfileForm(instance=user)
-        if request.method == 'POST':
-            form = UpdateProfileForm(request.POST, request.FILES, instance=user)
-            if form.is_valid():
-                form.save()
-                messages.success(request, "Profile updated successfully")
-                return redirect("profile")
-        
-        
-    context = {"form": form}
-    return render(request, "core/update_profile.html", context)
-
-"""
